@@ -1,9 +1,15 @@
 import React from 'react';
+import { useSearchParams } from 'react-router-dom';
 import NoteItem from './NoteItem';
 import { getActiveNotes } from '../utils/local-data';
 
 function NoteList() {
-  const notes = getActiveNotes();
+  const [searchParams] = useSearchParams();
+  const searchTerm = searchParams.get('search');
+
+  const notes = getActiveNotes().filter((note) =>
+    note.title.toLowerCase().includes(searchTerm.toLowerCase())
+  );
 
   return (
     <section className="notes-list">
