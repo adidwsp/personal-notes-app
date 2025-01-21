@@ -4,19 +4,14 @@ import Header from './components/Header';
 import NoteList from './components/NoteList';
 import NoteDetail from './components/NoteDetail';
 import SearchBar from './components/SearchBar';
+import HomePage from './pages/HomePage';
 
 function App() {
   return (
     <BrowserRouter>
       <div className="app-container">
         <Header />
-        <main>
-          <section className="homepage">
-            <h2>Catatan Aktif</h2>
-            <SearchBar />
-            <NoteList />
-          </section>
-        </main>
+        <HomePage />
       </div>
     </BrowserRouter>
   );

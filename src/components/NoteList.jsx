@@ -1,24 +1,13 @@
-import React from 'react';
-import { useSearchParams } from 'react-router-dom';
-import NoteItem from './NoteItem';
-import { getActiveNotes } from '../utils/local-data';
+import React from "react";
+import NoteItem from "./NoteItem";
 
-function NoteList() {
-  const [searchParams] = useSearchParams();
-  const searchTerm = searchParams.get('search');
-
-  const notes = getActiveNotes().filter((note) =>
-    note.title.toLowerCase().includes(searchTerm.toLowerCase())
-  );
-
+function NoteList({ notes }) {
   return (
     <section className="notes-list">
       {notes.length === 0 ? (
         <p>Tidak ada catatan aktif</p>
       ) : (
-        notes.map((note) => (
-          <NoteItem key={note.id} note={note} />
-        ))
+        notes.map((note) => <NoteItem key={note.id} note={note} />)
       )}
     </section>
   );
