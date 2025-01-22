@@ -6,7 +6,7 @@ function Header() {
       <h1><a href="/">Aplikasi Catatan</a></h1>
       <nav className="navigation">
         <ul>
-          <li><a href="/archives">Arsip</a></li>
+          <li><a href="/archieves">Arsip</a></li>
         </ul>
       </nav>
     </header>

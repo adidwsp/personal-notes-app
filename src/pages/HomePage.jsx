@@ -7,7 +7,7 @@ import { getAllNotes } from "../utils/local-data";
 function HomePageWrapper() {
   const [searchParams, setSearchParams] = useSearchParams();
 
-  const keyword = searchParams.get("keyword") || ""; // Default ke string kosong jika tidak ada keyword
+  const keyword = searchParams.get("keyword") || "";
 
   function changeSearchParams(keyword) {
     setSearchParams({ keyword });
@@ -21,35 +21,32 @@ class HomePage extends React.Component {
     super(props);
 
     this.state = {
-      notes: getAllNotes(), // Mengambil semua catatan
-      keyword: props.defaultKeyword || "", // Keyword default dari props
+      notes: getAllNotes(), 
+      keyword: props.defaultKeyword || "", 
     };
 
     this.onKeywordChangeHandler = this.onKeywordChangeHandler.bind(this);
   }
 
   onKeywordChangeHandler(keyword) {
-    this.setState({ keyword }); // Perbarui state keyword
-    this.props.keywordChange(keyword); // Perbarui URL search params
+    this.setState({ keyword }); 
+    this.props.keywordChange(keyword);
   }
 
   render() {
-    // Filter catatan berdasarkan keyword
     const filteredNotes = this.state.notes.filter((note) =>
       note.title.toLowerCase().includes(this.state.keyword.toLowerCase())
     );
 
     return (
-      <main>
-        <section className="homepage">
-          <h2>Catatan Aktif</h2>
-          <SearchBar
-            keyword={this.state.keyword}
-            setKeyword={this.onKeywordChangeHandler}
-            />
-          <NoteList notes={filteredNotes} />
-        </section>
-      </main>
+      <section className="homepage">
+        <h2>Catatan Aktif</h2>
+        <SearchBar
+          keyword={this.state.keyword}
+          setKeyword={this.onKeywordChangeHandler}
+          />
+        <NoteList notes={filteredNotes} />
+      </section>
     );
   }
 }
