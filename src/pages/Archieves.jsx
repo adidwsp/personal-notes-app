@@ -1,13 +1,54 @@
 import React from "react";
+import SearchBar from "../components/SearchBar";
+import NoteList from "../components/NoteList";
+import { useSearchParams } from "react-router-dom";
+import { getArchivedNotes } from "../utils/local-data";
 
+function ArchievesWrapper() {
+  const [searchParams, setSearchParams] = useSearchParams();
 
-function Archieves() {
-  return (
-    <section className="archieves">
-      <h2>Archieves</h2>
-      <p>Halaman ini menampilkan catatan yang sudah diarsipkan</p>
-    </section>
-  );
+  const keyword = searchParams.get("keyword") || "";
+
+  function changeSearchParams(keyword) {
+    setSearchParams({ keyword });
+  }
+
+  return <Archieves defaultKeyword={keyword} keywordChange={changeSearchParams} />;
 }
 
-export default Archieves;
+class Archieves extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      notes: getArchivedNotes(), 
+      keyword: props.defaultKeyword || "", 
+    };
+
+    this.onKeywordChangeHandler = this.onKeywordChangeHandler.bind(this);
+  }
+
+  onKeywordChangeHandler(keyword) {
+    this.setState({ keyword }); 
+    this.props.keywordChange(keyword);
+  }
+
+  render() {
+    const filteredArchievedNotes = this.state.notes.filter((note) =>
+      note.title.toLowerCase().includes(this.state.keyword.toLowerCase())
+    );
+
+    return (
+      <section className="archives-page">
+        <h2>Catatan Arsip</h2>
+        <SearchBar
+          keyword={this.state.keyword}
+          setKeyword={this.onKeywordChangeHandler}
+          />
+        <NoteList notes={filteredArchievedNotes} />
+      </section>
+    );
+  }
+}
+
+export default ArchievesWrapper;
