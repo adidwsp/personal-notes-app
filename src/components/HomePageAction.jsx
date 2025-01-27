@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { HiPlus } from 'react-icons/hi'
 import { useNavigate } from 'react-router-dom'
 
-function HomePageAction({ handleSave }) {
+function HomePageAction() {
   const navigate = useNavigate()
 
   return (

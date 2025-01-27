@@ -3,6 +3,7 @@ import SearchBar from "../components/SearchBar";
 import NoteList from "../components/NoteList";
 import { useSearchParams } from "react-router-dom";
 import { getArchivedNotes } from "../utils/local-data";
+import PropTypes from "prop-types";
 
 function ArchievesWrapper() {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -50,5 +51,10 @@ class Archieves extends React.Component {
     );
   }
 }
+
+Archieves.propTypes = {
+  defaultKeyword: PropTypes.string,
+  keywordChange: PropTypes.func.isRequired,
+};
 
 export default ArchievesWrapper;
