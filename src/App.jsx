@@ -6,6 +6,8 @@ import NoteDetail from './components/NoteDetail';
 import SearchBar from './components/SearchBar';
 import HomePage from './pages/HomePage';
 import Archieves from './pages/Archieves';
+import NotesEditPages from './pages/NotesEditPage';
+import NotesNewPages from './pages/NotesNewPages';
 
 function App() {
   return (
@@ -17,6 +19,8 @@ function App() {
             <Route path="/" element={<HomePage />} />
             <Route path="/archieves" element={<Archieves />} />
             <Route path="/notes/:id" element={<NoteDetail />} />
+            <Route path="/notes/:id/edit" element={<NotesEditPages />} />
+            <Route path="/notes/new" element={<NotesNewPages />} />
           </Routes>
         </main>
       </div>
