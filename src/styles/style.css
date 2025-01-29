@@ -139,6 +139,23 @@ main {
   right: 32px;
 }
 
+.note-item__delete-button,.note-item__archive-button {
+  display: block;
+  width: 100%;
+  background-color: transparent;
+  border: 0;
+  border-top: 1px solid #aaa;
+  padding: 8px 0;
+  font-family: 'Inter', sans-serif;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.note-item__delete-button {
+  border-right: 1px solid #aaa;
+  color: #ff5f52;
+}
+
 .action {
   display: flex;
   align-items: center;
@@ -154,11 +171,11 @@ main {
   cursor: pointer;
 }
 
-.add-new-page__input {
+.add-new-page__input, .edit-page__input {
   margin-top: 32px;
 }
 
-.add-new-page__input .add-new-page__input__title {
+.add-new-page__input .add-new-page__input__title, .edit-page__input .edit-page__input__title {
   width: 100%;
   background-color: transparent;
   border: 0;
@@ -169,11 +186,11 @@ main {
   padding: 8px 0;
 }
 
-.add-new-page__input__title::placeholder {
+.add-new-page__input__title::placeholder, .edit-page__input__title::placeholder {
   color: var(--on-background-grey);
 }
 
-.add-new-page__input .add-new-page__input__body {
+.add-new-page__input .add-new-page__input__body, .edit-page__input .edit-page__input__body {
   width: 100%;
   background-color: transparent;
   border: 0;

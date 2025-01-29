@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { showFormattedDate } from '../utils/index';
+import PropTypes from 'prop-types';
 
 function NoteItem({ note }) {
   return (
@@ -15,5 +16,9 @@ function NoteItem({ note }) {
     </article>
   );
 }
+
+NoteItem.propTypes = {
+  note: PropTypes.object.isRequired,
+};
 
 export default NoteItem;
