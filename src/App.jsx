@@ -7,6 +7,8 @@ import Archieves from './pages/Archieves';
 import NotesEditPages from './pages/NotesEditPage';
 import NotesNewPages from './pages/NotesNewPages';
 import NotFoundPages from './pages/NotFoundPages';
+import RegisterPage from './pages/RegisterPage';
+
 
 function App() {
   return (
@@ -16,6 +18,7 @@ function App() {
         <main>
           <Routes>
             <Route path="/" element={<HomePage />} />
+            <Route path="/register" element={<RegisterPage />} />
             <Route path="/archieves" element={<Archieves />} />
             <Route path="/notes/:id" element={<NoteDetail />} />
             <Route path="/notes/:id/edit" element={<NotesEditPages />} />
